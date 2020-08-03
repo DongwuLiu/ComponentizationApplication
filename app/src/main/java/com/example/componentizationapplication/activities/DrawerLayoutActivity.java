@@ -34,7 +34,6 @@ public class DrawerLayoutActivity extends Activity implements View.OnClickListen
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-        setTopTitle();
         btnCloseRightView.setOnClickListener(this);
     }
 
