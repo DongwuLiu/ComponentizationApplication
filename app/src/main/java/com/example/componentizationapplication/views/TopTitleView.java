@@ -24,10 +24,14 @@ import static android.content.ContentValues.TAG;
  * @UpdateRemark: 更新说明：
  * @Version: 1.0
  */
-public class TopTitleView extends LinearLayout {
+public class TopTitleView extends LinearLayout implements View.OnClickListener {
     protected Context mContext;
     private ImageView leftMenuButton;
-    private TextView mainTitleView;
+    private TextView mainTitleView; //单标题
+    private LinearLayout doubleTitleLayout; //双标题
+    private TextView doubleMainTitleView;   //双标题-主标题
+    private TextView doubleSubTitleView;    //双标题-副标题
+    private TopTitleClickListener topTitleClickListener;
 
     public TopTitleView(Context context) {
         super(context);
@@ -53,7 +57,68 @@ public class TopTitleView extends LinearLayout {
     private void initView() {
         View topTitleView = LayoutInflater.from(mContext).inflate(R.layout.app_top_view_layout, this);
 
-        leftMenuButton = topTitleView.findViewById(R.id.top_menus);
-        mainTitleView = topTitleView.findViewById(R.id.top_Title);
+        leftMenuButton = topTitleView.findViewById(R.id.left_top_menus);
+        mainTitleView = topTitleView.findViewById(R.id.top_title);
+        doubleTitleLayout = topTitleView.findViewById(R.id.lin_double_title);
+        doubleMainTitleView = topTitleView.findViewById(R.id.double_main_top_title);
+        doubleSubTitleView = topTitleView.findViewById(R.id.double_sub_top_title);
+
+        leftMenuButton.setOnClickListener(this);
+    }
+
+    /**
+     * 设置主标题名称
+     */
+    public void setTitleName(String titleName) {
+        mainTitleView.setVisibility(VISIBLE);
+        doubleTitleLayout.setVisibility(GONE);
+        mainTitleView.setText(titleName);
+    }
+
+    /**
+     * 设置双标题
+     */
+    public void setDoubleTitleview(String mainTitleName, String subTitleName) {
+        mainTitleView.setVisibility(GONE);
+        doubleTitleLayout.setVisibility(VISIBLE);
+
+        doubleMainTitleView.setText(mainTitleName);
+        doubleSubTitleView.setText(subTitleName);
+    }
+
+    /**
+     * 设置双标题-主标题
+     */
+    public void setDoubleMainTitleView(String mainTitleName) {
+        doubleMainTitleView.setText(mainTitleName);
+    }
+
+    /**
+     * 设置双标题-副标题
+     */
+    public void setDoubleSubTitleView(String subTitleName) {
+        doubleSubTitleView.setText(subTitleName);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.left_top_menus:
+                if (topTitleClickListener != null) {
+                    topTitleClickListener.onLeftTitleClick();
+                }
+
+        }
+    }
+
+    public void setOnClickListener(TopTitleClickListener topTitleClickListener) {
+        this.topTitleClickListener = topTitleClickListener;
+    }
+
+    /**
+     * 标题按钮点击实现方法
+     */
+    public interface TopTitleClickListener {
+        void onLeftTitleClick();
     }
 }

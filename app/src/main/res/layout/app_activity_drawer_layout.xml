@@ -12,10 +12,12 @@
     <!--主界面，主内容区的界面布局代码必须放在侧滑菜单布局之前-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include
-            android:id="@+id/app_top_layout_view"
-            layout="@layout/app_top_view_layout"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.example.componentizationapplication.views.TopTitleView
+            android:id="@+id/top_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <!--侧滑界面，侧滑菜单必须指定layout_gravity属性，表示侧滑方向-->
