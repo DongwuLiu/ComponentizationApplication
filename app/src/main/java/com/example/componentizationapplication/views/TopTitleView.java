@@ -66,6 +66,14 @@ public class TopTitleView extends LinearLayout implements View.OnClickListener {
         leftMenuButton.setOnClickListener(this);
     }
 
+    public void isShowLeftTopMenus(boolean isShow) {
+        if (isShow) {
+            leftMenuButton.setVisibility(VISIBLE);
+        } else {
+            leftMenuButton.setVisibility(GONE);
+        }
+    }
+
     /**
      * 设置主标题名称
      */

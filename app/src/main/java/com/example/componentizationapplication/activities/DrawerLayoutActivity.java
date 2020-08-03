@@ -10,7 +10,7 @@ import com.example.componentizationapplication.views.TopTitleView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class DrawerLayoutActivity extends Activity implements View.OnClickListener {
+public class DrawerLayoutActivity extends BaseActivity implements View.OnClickListener {
     private DrawerLayout drawerLayout;
     private Button btnCloseRightView;
     private TopTitleView topTitleView;
@@ -18,12 +18,15 @@ public class DrawerLayoutActivity extends Activity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_activity_drawer_layout);
-
-        initView();
     }
 
-    private void initView() {
+    @Override
+    public int getLayoutResId() {
+        return R.layout.app_activity_drawer_layout;
+    }
+
+    @Override
+    public void initView() {
         drawerLayout = findViewById(R.id.drawer_layout);
         btnCloseRightView = findViewById(R.id.btn_close_right_sideslip_layout);
         topTitleView = findViewById(R.id.top_title_view);
@@ -38,7 +41,7 @@ public class DrawerLayoutActivity extends Activity implements View.OnClickListen
         btnCloseRightView.setOnClickListener(this);
     }
 
-    private void setTopTitle() {
+    public void setTopTitle() {
         topTitleView.setTitleName("侧滑布局");
     }
 

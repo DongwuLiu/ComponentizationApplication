@@ -9,32 +9,44 @@ import android.widget.Button;
 
 import com.example.componentizationapplication.R;
 import com.example.componentizationapplication.application.MyApplication;
+import com.example.componentizationapplication.views.TopTitleView;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
-    Button goSwipeLayout;
-    Button goDrawerLayout;
+    private TopTitleView topTitleView;
+    private Button goSwipeLayout;
+    private Button goDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         MyApplication myApplication = MyApplication.getInstance();
         Log.d(TAG, "onCreate: MyApplication num = " + myApplication.getNum());
         myApplication.setNum(10);
         Log.d(TAG, "onCreate: MyApplication num = " + myApplication.getNum());
-
-        initView();
     }
 
-    private void initView() {
+    @Override
+    public int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initView() {
+        topTitleView = findViewById(R.id.app_top_layout_view);
         goSwipeLayout = findViewById(R.id.go_swipe_refresh_layout);
         goDrawerLayout = findViewById(R.id.go_drawer_layout);
 
         goSwipeLayout.setOnClickListener(this);
         goDrawerLayout.setOnClickListener(this);
+    }
+
+    @Override
+    public void setTopTitle() {
+        topTitleView.setTitleName("组件化主界面");
+//        topTitleView.isShowLeftTopMenus(false);
     }
 
     @Override
