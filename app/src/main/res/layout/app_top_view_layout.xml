@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="50dp"
     android:background="@color/app_title_background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <ImageView
-        android:id="@+id/top_menus"
+        android:id="@+id/left_top_menus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -16,7 +16,7 @@
         android:src="@mipmap/menus"/>
 
     <TextView
-        android:id="@+id/top_Title"
+        android:id="@+id/top_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,5 +26,34 @@
         android:text="标题名称"
         android:textSize="@dimen/app_top_title_text_size"
         android:textColor="@color/app_title_text_color" />
+
+    <LinearLayout
+        android:id="@+id/lin_double_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/double_main_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主标题名称"
+            android:textSize="@dimen/app_top_double_main_title_text_size"
+            android:textColor="@color/app_title_text_color" />
+
+        <TextView
+            android:id="@+id/double_sub_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="副标题名称"
+            android:textSize="@dimen/app_top_double_sub_title_text_size"
+            android:textColor="@color/app_title_text_color" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

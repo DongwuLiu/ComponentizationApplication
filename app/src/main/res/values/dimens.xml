@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_top_title_text_size">20dp</dimen>
+    <dimen name="app_top_title_text_size">22dp</dimen>
+    <dimen name="app_top_double_main_title_text_size">18dp</dimen>
+    <dimen name="app_top_double_sub_title_text_size">12dp</dimen>
 </resources>
