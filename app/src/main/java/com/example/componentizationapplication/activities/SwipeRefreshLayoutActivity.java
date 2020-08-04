@@ -2,7 +2,6 @@ package com.example.componentizationapplication.activities;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewTreeObserver;
@@ -78,7 +77,7 @@ public class SwipeRefreshLayoutActivity extends BaseActivity {
     @Override
     public void setTopTitle() {
         topTitleView.setTitleName("SwipeRefresh布局");
-        topTitleView.isShowLeftTopMenus(false);
+        topTitleView.isShowLeftTopBack(true);
     }
 
     private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {

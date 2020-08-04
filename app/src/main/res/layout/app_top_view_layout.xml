@@ -15,6 +15,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:src="@mipmap/menus"/>
 
+    <ImageView
+        android:id="@+id/left_top_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@mipmap/back"/>
+
     <TextView
         android:id="@+id/top_title"
         android:layout_width="wrap_content"
