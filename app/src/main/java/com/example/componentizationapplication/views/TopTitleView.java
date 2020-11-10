@@ -1,5 +1,6 @@
 package com.example.componentizationapplication.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,6 +28,7 @@ import static android.content.ContentValues.TAG;
 public class TopTitleView extends LinearLayout implements View.OnClickListener {
     protected Context mContext;
     private ImageView leftMenuButton;
+    private ImageView leftBackButton;
     private TextView mainTitleView; //单标题
     private LinearLayout doubleTitleLayout; //双标题
     private TextView doubleMainTitleView;   //双标题-主标题
@@ -58,12 +60,36 @@ public class TopTitleView extends LinearLayout implements View.OnClickListener {
         View topTitleView = LayoutInflater.from(mContext).inflate(R.layout.app_top_view_layout, this);
 
         leftMenuButton = topTitleView.findViewById(R.id.left_top_menus);
+        leftBackButton = topTitleView.findViewById(R.id.left_top_back);
         mainTitleView = topTitleView.findViewById(R.id.top_title);
         doubleTitleLayout = topTitleView.findViewById(R.id.lin_double_title);
         doubleMainTitleView = topTitleView.findViewById(R.id.double_main_top_title);
         doubleSubTitleView = topTitleView.findViewById(R.id.double_sub_top_title);
 
         leftMenuButton.setOnClickListener(this);
+        leftBackButton.setOnClickListener(this);
+    }
+
+    public void isShowLeftTopMenus(boolean isShow) {
+        if (isShow) {
+            if (leftBackButton.getVisibility() == VISIBLE) {
+                leftBackButton.setVisibility(GONE);
+            }
+            leftMenuButton.setVisibility(VISIBLE);
+        } else {
+            leftMenuButton.setVisibility(GONE);
+        }
+    }
+
+    public void isShowLeftTopBack(boolean isShow) {
+        if (isShow) {
+            if (leftMenuButton.getVisibility() == VISIBLE) {
+                leftMenuButton.setVisibility(GONE);
+            }
+            leftBackButton.setVisibility(VISIBLE);
+        } else {
+            leftBackButton.setVisibility(GONE);
+        }
     }
 
     /**
@@ -107,7 +133,10 @@ public class TopTitleView extends LinearLayout implements View.OnClickListener {
                 if (topTitleClickListener != null) {
                     topTitleClickListener.onLeftTitleClick();
                 }
-
+                break;
+            case R.id.left_top_back:
+                ((Activity)mContext).finish();
+                break;
         }
     }
 

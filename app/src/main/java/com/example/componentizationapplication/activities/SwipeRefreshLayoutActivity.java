@@ -2,7 +2,6 @@ package com.example.componentizationapplication.activities;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewTreeObserver;
@@ -13,11 +12,13 @@ import android.widget.ScrollView;
 
 import com.example.componentizationapplication.R;
 import com.example.componentizationapplication.Utils.Tools;
+import com.example.componentizationapplication.views.TopTitleView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwipeRefreshLayoutActivity extends Activity {
+public class SwipeRefreshLayoutActivity extends BaseActivity {
+    private TopTitleView topTitleView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ListView listView;
     private ScrollView mScrollView;
@@ -28,12 +29,17 @@ public class SwipeRefreshLayoutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_activity_swipe_refresh_layout);
-
-        initView();
     }
 
-    private void initView() {
+    @Override
+    public int getLayoutResId() {
+        return R.layout.app_activity_swipe_refresh_layout;
+    }
+
+    @Override
+    public void initView() {
+        topTitleView = findViewById(R.id.app_top_layout_view);
+
         for (int i = 0; i < 5; i++) {
             listData.add("初始化的第" + i + "条数据");
         }
@@ -66,6 +72,12 @@ public class SwipeRefreshLayoutActivity extends Activity {
                 }
             });
         }
+    }
+
+    @Override
+    public void setTopTitle() {
+        topTitleView.setTitleName("SwipeRefresh布局");
+        topTitleView.isShowLeftTopBack(true);
     }
 
     private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
