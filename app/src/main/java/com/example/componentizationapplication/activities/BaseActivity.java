@@ -14,9 +14,9 @@ public abstract class BaseActivity extends Activity {
         setTopTitle();
     }
 
-    public abstract int getLayoutResId();
+    public abstract int getLayoutResId();   //获取布局文件
 
-    public abstract void initView();
+    public abstract void initView();        //初始化页面
 
-    public abstract void setTopTitle();
+    public abstract void setTopTitle();     //设置头部标题
 }
